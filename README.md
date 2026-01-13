@@ -1,18 +1,16 @@
-# Welcome to your Lovable project
+# Welcome to Personal Task Management System
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**URL**: https://lovable.dev/projects/PERSONAL_TASK_MANAGEMENT_SYSTEM
 
 ## How can I edit this code?
 
-There are several ways of editing your application.
+There are several ways of building application.
 
 **Use Lovable**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
+Simply visit the [Lovable Project](https://lovable.dev/projects/PERSONAL_TASK_MANAGEMENT_SYSTEM) 
 
 **Use your preferred IDE**
 
@@ -62,11 +60,11 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Simply open [Lovable](https://lovable.dev/projects/PERSONAL_TASK_MANAGEMENT_SYSTEM) and click on Share -> Publish.
 
 ## Can I connect a custom domain to my Lovable project?
 
-Yes, you can!
+Yes
 
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
