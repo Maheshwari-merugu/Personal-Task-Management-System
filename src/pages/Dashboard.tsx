@@ -25,25 +25,39 @@ export default function Dashboard() {
     search: '',
     status: 'all',
     priority: 'all',
+    sortBy: 'created_desc',
   });
 
   useEffect(() => {
     if (!authLoading && !user) {
-      navigate('/auth');
+      navigate('/login');
     }
   }, [user, authLoading, navigate]);
 
   const filteredTasks = useMemo(() => {
-    return tasks.filter((task) => {
+    let result = tasks.filter((task) => {
       const matchesSearch = !filters.search || 
         task.title.toLowerCase().includes(filters.search.toLowerCase()) ||
         task.description?.toLowerCase().includes(filters.search.toLowerCase());
-      
       const matchesStatus = filters.status === 'all' || task.status === filters.status;
       const matchesPriority = filters.priority === 'all' || task.priority === filters.priority;
-      
       return matchesSearch && matchesStatus && matchesPriority;
     });
+
+    const priorityOrder = { high: 3, medium: 2, low: 1 };
+    result.sort((a, b) => {
+      switch (filters.sortBy) {
+        case 'created_asc': return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+        case 'due_date_asc': return (a.due_date || '9999') < (b.due_date || '9999') ? -1 : 1;
+        case 'due_date_desc': return (b.due_date || '') > (a.due_date || '') ? 1 : -1;
+        case 'priority_desc': return priorityOrder[b.priority] - priorityOrder[a.priority];
+        case 'priority_asc': return priorityOrder[a.priority] - priorityOrder[b.priority];
+        case 'title_asc': return a.title.localeCompare(b.title);
+        case 'title_desc': return b.title.localeCompare(a.title);
+        default: return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      }
+    });
+    return result;
   }, [tasks, filters]);
 
   const handleCreateTask = (data: CreateTaskData) => {
@@ -151,6 +165,7 @@ export default function Dashboard() {
                 onToggleStatus={handleToggleStatus}
                 onEdit={openEditDialog}
                 onDelete={(id) => setDeletingTaskId(id)}
+                onNavigate={(id) => navigate(`/task/${id}`)}
               />
             ))}
           </div>

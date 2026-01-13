@@ -14,6 +14,7 @@ interface TaskCardProps {
   onToggleStatus: (id: string, status: Task['status']) => void;
   onEdit: (task: Task) => void;
   onDelete: (id: string) => void;
+  onNavigate?: (id: string) => void;
 }
 
 const priorityColors = {
@@ -28,13 +29,20 @@ const statusLabels = {
   completed: 'Completed',
 };
 
-export function TaskCard({ task, onToggleStatus, onEdit, onDelete }: TaskCardProps) {
+export function TaskCard({ task, onToggleStatus, onEdit, onDelete, onNavigate }: TaskCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const isCompleted = task.status === 'completed';
   
-  const handleStatusToggle = () => {
+  const handleStatusToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
     const newStatus = isCompleted ? 'pending' : 'completed';
     onToggleStatus(task.id, newStatus);
+  };
+
+  const handleCardClick = () => {
+    if (onNavigate) {
+      onNavigate(task.id);
+    }
   };
 
   const isOverdue = task.due_date && new Date(task.due_date) < new Date() && !isCompleted;
@@ -42,9 +50,10 @@ export function TaskCard({ task, onToggleStatus, onEdit, onDelete }: TaskCardPro
   return (
     <Card 
       className={cn(
-        'transition-all duration-200 hover:shadow-md',
+        'transition-all duration-200 hover:shadow-md cursor-pointer',
         isCompleted && 'opacity-60'
       )}
+      onClick={handleCardClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -52,7 +61,11 @@ export function TaskCard({ task, onToggleStatus, onEdit, onDelete }: TaskCardPro
         <div className="flex items-start gap-3">
           <Checkbox 
             checked={isCompleted}
-            onCheckedChange={handleStatusToggle}
+            onClick={(e) => e.stopPropagation()}
+            onCheckedChange={() => {
+              const newStatus = isCompleted ? 'pending' : 'completed';
+              onToggleStatus(task.id, newStatus);
+            }}
             className="mt-1"
           />
           
