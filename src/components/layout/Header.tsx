@@ -5,8 +5,9 @@ import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { CheckSquare, LogOut, User, Menu, LayoutDashboard, ListTodo } from 'lucide-react';
+import { LogOut, User, Menu, LayoutDashboard, ListTodo } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { AppLogo } from '@/components/ui/AppLogo';
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -30,7 +31,7 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
           <Link to="/dashboard" className="flex items-center gap-2">
-            <CheckSquare className="h-6 w-6 text-primary" />
+            <AppLogo size="md" />
             <span className="text-xl font-bold text-foreground">TaskFlow</span>
           </Link>
           
@@ -64,7 +65,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="left" className="w-64">
               <div className="flex items-center gap-2 mb-6">
-                <CheckSquare className="h-6 w-6 text-primary" />
+                <AppLogo size="md" />
                 <span className="text-xl font-bold">TaskFlow</span>
               </div>
               <nav className="flex flex-col gap-1">
