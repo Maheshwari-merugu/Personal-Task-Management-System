@@ -23,7 +23,7 @@ Frontend (Client)
 ├── Tailwind CSS
 
 ├── shadcn-ui
-│
+
 Backend (Serverless – Supabase)
 
 ├── Authentication (Supabase Auth)
@@ -117,6 +117,7 @@ git clone <YOUR_GIT_URL>
 cd <YOUR_PROJECT_NAME>
 
 npm install
+
 npm run dev
 
 ### Option 3: GitHub Codespaces
