@@ -42,10 +42,10 @@ export default function Index() {
             <span className="text-xl font-bold text-foreground">TaskFlow</span>
           </div>
           <div className="flex items-center gap-4">
-            <Link to="/auth">
+            <Link to="/login">
               <Button variant="ghost">Sign In</Button>
             </Link>
-            <Link to="/auth">
+            <Link to="/register">
               <Button>Get Started</Button>
             </Link>
           </div>
@@ -62,7 +62,7 @@ export default function Index() {
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
           Stay organized, boost productivity, and achieve your goals with our secure and intuitive task management platform.
         </p>
-        <Link to="/auth">
+        <Link to="/register">
           <Button size="lg" className="text-lg px-8">
             Start Free
             <ArrowRight className="ml-2 h-5 w-5" />
