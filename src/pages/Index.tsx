@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
-import { CheckSquare, CheckCircle2, Shield, Zap, ArrowRight } from 'lucide-react';
+import { CheckCircle2, Shield, Zap, ArrowRight } from 'lucide-react';
+import { AppLogo } from '@/components/ui/AppLogo';
 
 export default function Index() {
   const { user, loading } = useAuth();
@@ -38,7 +39,7 @@ export default function Index() {
       <header className="border-b border-border">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <CheckSquare className="h-6 w-6 text-primary" />
+            <AppLogo size="md" />
             <span className="text-xl font-bold text-foreground">TaskFlow</span>
           </div>
           <div className="flex items-center gap-4">
