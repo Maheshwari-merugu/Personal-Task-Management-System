@@ -113,7 +113,9 @@ This guarantees multi-user safety and backend-level authorization.
 #### Setup
 
 git clone <YOUR_GIT_URL>
+
 cd <YOUR_PROJECT_NAME>
+
 npm install
 npm run dev
 
@@ -157,7 +159,7 @@ Contributions are welcome. Fork the repository, create a feature branch, and sub
 
 This project is open-source and available under the applicable license.
 
-## 📬 Notes for Reviewers & Interviewers
+## 📬 Notes for Reviewers
 
 This project uses **Supabase as a backend**, handling authentication, database management, authorization, and APIs. While there is no traditional Node.js server, the backend responsibilities are fully implemented using a modern serverless architecture.
 
