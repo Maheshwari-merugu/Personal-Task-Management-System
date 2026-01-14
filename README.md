@@ -13,17 +13,27 @@ This is a **true full-stack project**, even without a traditional Express server
 ## 🧱 Full-Stack Architecture
 
 Frontend (Client)
+
 ├── React
+
 ├── TypeScript
+
 ├── Vite
+
 ├── Tailwind CSS
+
 ├── shadcn-ui
 │
 Backend (Serverless – Supabase)
+
 ├── Authentication (Supabase Auth)
+
 ├── PostgreSQL Database
+
 ├── Row Level Security (RLS)
+
 ├── Secure REST APIs
+
 └── Authorization Rules
 
 ## 🛠️ Technology Stack
