@@ -1,6 +1,6 @@
 # Personal Task Management System
 
-A **modern, serverless full-stack Personal Task Management System** built using React on the frontend and **Supabase as a backend-as-a-service**. This project demonstrates real-world full-stack development including authentication, database design, backend security, and frontend-backend integration.
+A **modern,full-stack Personal Task Management System** built using React on the frontend and **Supabase as a backend-as-a-service**. This project demonstrates real-world full-stack development including authentication, database design, backend security, and frontend-backend integration.
 
 🔗 **Project URL:** https://personal-task-management-system.lovable.app
 
