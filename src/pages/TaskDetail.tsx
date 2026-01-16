@@ -4,8 +4,7 @@ import { format } from 'date-fns';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useAuth } from '@/contexts/AuthContext';
-import { useTasks, Task, UpdateTaskData } from '@/hooks/useTasks';
+import { useTasks, UpdateTaskData } from '@/hooks/useTasks';
 import { Header } from '@/components/layout/Header';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -34,7 +33,6 @@ type TaskFormData = z.infer<typeof taskSchema>;
 
 export default function TaskDetail() {
   const { id } = useParams<{ id: string }>();
-  const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
   const { tasks, isLoading: tasksLoading, updateTask, deleteTask } = useTasks();
@@ -52,12 +50,6 @@ export default function TaskDetail() {
       due_date: null,
     },
   });
-
-  useEffect(() => {
-    if (!authLoading && !user) {
-      navigate('/login');
-    }
-  }, [user, authLoading, navigate]);
 
   useEffect(() => {
     if (task) {
@@ -106,7 +98,7 @@ export default function TaskDetail() {
     });
   };
 
-  if (authLoading || tasksLoading) {
+  if (tasksLoading) {
     return (
       <div className="min-h-screen bg-background">
         <Header />

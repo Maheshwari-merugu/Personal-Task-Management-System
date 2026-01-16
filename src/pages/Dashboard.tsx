@@ -1,6 +1,5 @@
 import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useTasks, Task, CreateTaskData, UpdateTaskData } from '@/hooks/useTasks';
 import { Header } from '@/components/layout/Header';
@@ -14,7 +13,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Plus, ClipboardList } from 'lucide-react';
 
 export default function Dashboard() {
-  const { user, loading: authLoading } = useAuth();
+  const { loading: authLoading } = useAuth();
   const navigate = useNavigate();
   const { tasks, isLoading, createTask, updateTask, deleteTask, toggleStatus } = useTasks();
   
@@ -27,12 +26,6 @@ export default function Dashboard() {
     priority: 'all',
     sortBy: 'created_desc',
   });
-
-  useEffect(() => {
-    if (!authLoading && !user) {
-      navigate('/login');
-    }
-  }, [user, authLoading, navigate]);
 
   const filteredTasks = useMemo(() => {
     let result = tasks.filter((task) => {

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -36,17 +35,10 @@ type PasswordFormData = z.infer<typeof passwordSchema>;
 
 export default function Profile() {
   const { user, loading: authLoading, signOut } = useAuth();
-  const navigate = useNavigate();
   const { toast } = useToast();
   const [isProfileLoading, setIsProfileLoading] = useState(false);
   const [isPasswordLoading, setIsPasswordLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    if (!authLoading && !user) {
-      navigate('/login');
-    }
-  }, [user, authLoading, navigate]);
 
   const profileForm = useForm<ProfileFormData>({
     resolver: zodResolver(profileSchema),
